@@ -1,5 +1,5 @@
 import 'package:bank_app/core/assets.dart';
-import 'package:bank_app/features/dashboard/presentation/views/dashboardtwo_view.dart';
+import 'package:bank_app/features/dashboard/presentation/views/dashboard_view.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -162,7 +162,7 @@ class BodyWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute<void>(
-                      builder: (BuildContext context) => const DashboardTwoView(),
+                      builder: (BuildContext context) => const DashboardView(),
                     ),
                   );
                 },

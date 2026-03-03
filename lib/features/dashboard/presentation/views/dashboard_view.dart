@@ -1,7 +1,10 @@
+import 'package:bank_app/features/dashboard/presentation/views/widgets/bill_item_widget.dart';
+import 'package:bank_app/features/dashboard/presentation/views/widgets/gradient_card_widget.dart';
+import 'package:bank_app/features/dashboard/presentation/views/widgets/transaction_title_widget.dart';
 import 'package:flutter/material.dart';
 
-class DashboardTwoView extends StatelessWidget {
-  const DashboardTwoView({super.key});
+class DashboardView extends StatelessWidget {
+  const DashboardView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +49,9 @@ class _TopCards extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: _GradientCard(
+            child: GradientCard(
               title: "Income",
               amount: "\Q21,000",
-              //colors: [Color.fromARGB(255, 171, 213, 127), Color.fromARGB(255, 134, 231, 191)],
               colors: [
                 Color.fromRGBO(174, 183, 132, 1),
                 Color.fromRGBO(227, 219, 187, 1),
@@ -58,59 +60,13 @@ class _TopCards extends StatelessWidget {
           ),
           const SizedBox(width: 15),
           Expanded(
-            child: _GradientCard(
+            child: GradientCard(
               title: "Expenditure",
               amount: "\Q11,000",
               colors: [
                 Color.fromRGBO(174, 183, 132, 1),
                 Color.fromRGBO(227, 219, 187, 1),
               ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _GradientCard extends StatelessWidget {
-  final String title;
-  final String amount;
-  final List<Color> colors;
-
-  const _GradientCard({
-    required this.title,
-    required this.amount,
-    required this.colors,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(18),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        gradient: LinearGradient(colors: colors),
-        boxShadow: [
-          BoxShadow(
-            color: colors.last.withOpacity(0.4),
-            blurRadius: 20,
-            offset: const Offset(0, 10),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(title, style: const TextStyle(color: Colors.black, fontFamily: "OpenSans")),
-          const SizedBox(height: 10),
-          Text(
-            amount,
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              fontFamily: "OpenSans"
             ),
           ),
         ],
@@ -147,31 +103,38 @@ class _CreditCard extends StatelessWidget {
           Text(
             "User Name",
             style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-              fontFamily: "OpenSans"
-            ),
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                fontFamily: "OpenSans"),
           ),
           SizedBox(height: 20),
           Text(
             "Account Number:",
-            style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold, fontFamily: "OpenSans"),
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                fontFamily: "OpenSans"),
           ),
           Text(
             "4551 5667 8886 7775",
-            style: TextStyle(color: Colors.black, fontSize: 12, fontFamily: "OpenSans"),
+            style: TextStyle(
+                color: Colors.black, fontSize: 12, fontFamily: "OpenSans"),
           ),
           SizedBox(height: 20),
-          Text("Account Balance", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontFamily: "OpenSans")),
+          Text("Account Balance",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "OpenSans")),
           Text(
             "\Q121,000",
             style: TextStyle(
-              color: Colors.black,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              fontFamily: "OpenSans"
-            ),
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                fontFamily: "OpenSans"),
           ),
         ],
       ),
@@ -190,32 +153,31 @@ class _PayBillsSection extends StatelessWidget {
           const Text(
             "Pay Bills",
             style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Color.fromRGBO(65, 67, 27, 1),
-              fontFamily: "OpenSans"
-            ),
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Color.fromRGBO(65, 67, 27, 1),
+                fontFamily: "OpenSans"),
           ),
           const SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
-              _BillItem(
+              BillItem(
                 icon: Icons.water_drop,
                 label: "Water",
                 color: Color.fromRGBO(174, 183, 132, 1),
               ),
-              _BillItem(
+              BillItem(
                 icon: Icons.flash_on,
                 label: "Power",
                 color: Color.fromRGBO(174, 183, 132, 1),
               ),
-              _BillItem(
+              BillItem(
                 icon: Icons.wifi,
                 label: "Wi-Fi",
                 color: Color.fromRGBO(174, 183, 132, 1),
               ),
-              _BillItem(
+              BillItem(
                 icon: Icons.shopping_cart,
                 label: "Grocery",
                 color: Color.fromRGBO(174, 183, 132, 1),
@@ -234,149 +196,18 @@ class _TransactionsSection extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       children: const [
-        _TransactionTile(
+        TransactionTile(
           title: "Supermaket",
           date: "20 January 2026",
           amount: "-\Q22",
         ),
         SizedBox(height: 15),
-        _TransactionTile(
+        TransactionTile(
           title: "Wi-Fi Bill",
           date: "24 January 2026",
           amount: "-\Q120",
         ),
       ],
-    );
-  }
-}
-
-class _BillItem extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final Color color;
-
-  const _BillItem({
-    required this.icon,
-    required this.label,
-    required this.color,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          height: 70,
-          width: 70,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            gradient: LinearGradient(
-              colors: [color.withOpacity(0.8), color],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: color.withOpacity(0.4),
-                blurRadius: 15,
-                offset: const Offset(0, 8),
-              ),
-            ],
-          ),
-          child: Icon(icon, color: Colors.white, size: 28),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          label,
-          style: const TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w600,
-            color: Color.fromRGBO(65, 67, 27, 1),
-            fontFamily: "OpenSans"
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _TransactionTile extends StatelessWidget {
-  final String title;
-  final String date;
-  final String amount;
-
-  const _TransactionTile({
-    required this.title,
-    required this.date,
-    required this.amount,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final isNegative = amount.startsWith('-');
-
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 15,
-            offset: const Offset(0, 8),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          // Leading Icon Container
-          Container(
-            height: 45,
-            width: 45,
-            decoration: BoxDecoration(
-              color: Color.fromRGBO(248, 243, 225, 1),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Icon(Icons.store, color: Color.fromRGBO(65, 67, 27, 1)),
-          ),
-
-          const SizedBox(width: 15),
-
-          // Title & Date
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 15,
-                    fontFamily: "OpenSans"
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  date,
-                  style: TextStyle(color: Colors.grey.shade600, fontSize: 12, fontFamily: "OpenSans"),
-                ),
-              ],
-            ),
-          ),
-
-          // Amount
-          Text(
-            amount,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: isNegative ? Colors.redAccent : Colors.green,
-              fontFamily: "OpenSans"
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
@@ -410,7 +241,7 @@ class _BottomNavBar extends StatelessWidget {
           children: const [
             Icon(Icons.home),
             Icon(Icons.history),
-            SizedBox(width: 40), // space for FAB
+            SizedBox(width: 40),
             Icon(Icons.add_card),
             Icon(Icons.settings),
           ],
@@ -432,9 +263,9 @@ class MyAppBar extends StatelessWidget {
       children: [
         SizedBox(height: 50),
         Icon(
-          Icons.emoji_people,
+          Icons.person_rounded,
           color: Color.fromRGBO(65, 67, 27, 1),
-          size: 40,
+          size: 30,
         ),
         SizedBox(width: 10),
         Text(
