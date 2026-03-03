@@ -1,6 +1,17 @@
 # bank_app
 
-A new Flutter project.
+Bank App Flutter project.
+
+*In development*
+This project contains the modules:
+  - Login
+  - Dashboard
+  - History
+
+To do:
+  - Transfer
+  - Configuration
+  - HTTP client
 
 ## Getting Started
 
