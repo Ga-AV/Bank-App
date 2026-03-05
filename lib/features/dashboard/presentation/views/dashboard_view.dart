@@ -1,7 +1,9 @@
 import 'package:bank_app/features/dashboard/presentation/views/widgets/bill_item_widget.dart';
 import 'package:bank_app/features/dashboard/presentation/views/widgets/gradient_card_widget.dart';
 import 'package:bank_app/features/dashboard/presentation/views/widgets/transaction_title_widget.dart';
+import 'package:bank_app/features/dashboard/bottomBar/widget/bottomBar.dart';
 import 'package:flutter/material.dart';
+
 
 class DashboardView extends StatelessWidget {
   const DashboardView({super.key});
@@ -34,7 +36,7 @@ class BodyWidget extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const _BottomNavBar(),
+      bottomNavigationBar: const BottomNavBar(),
       floatingActionButton: const _CenterFAB(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
@@ -225,31 +227,33 @@ class _CenterFAB extends StatelessWidget {
   }
 }
 
-class _BottomNavBar extends StatelessWidget {
-  const _BottomNavBar();
+// class _BottomNavBar extends StatelessWidget {
+//   const _BottomNavBar();
 
-  @override
-  Widget build(BuildContext context) {
-    return BottomAppBar(
-      color: Color.fromRGBO(217, 231, 211, 1),
-      shape: const CircularNotchedRectangle(),
-      notchMargin: 8,
-      child: SizedBox(
-        height: 70,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: const [
-            Icon(Icons.home),
-            Icon(Icons.history),
-            SizedBox(width: 40),
-            Icon(Icons.add_card),
-            Icon(Icons.settings),
-          ],
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return BottomAppBar(
+//       color: Color.fromRGBO(217, 231, 211, 1),
+//       shape: const CircularNotchedRectangle(),
+//       notchMargin: 8,
+//       child: SizedBox(
+//         height: 70,
+//         child: Row(
+//           mainAxisAlignment: MainAxisAlignment.spaceAround,
+//           children: const [
+//             Icon(Icons.home),
+//             Icon(Icons.history),
+//             SizedBox(width: 40),
+//             Icon(Icons.add_card),
+//             Icon(Icons.settings),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+
 
 class MyAppBar extends StatelessWidget {
   const MyAppBar({super.key});
@@ -299,3 +303,4 @@ class MyAppBar extends StatelessWidget {
     );
   }
 }
+
