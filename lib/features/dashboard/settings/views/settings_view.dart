@@ -12,11 +12,19 @@ class _SettingsViewState extends State<SettingsView> {
   bool _notificationsEnabled = true;
   bool _biometricEnabled = false;
 
+  void _saveSettings() {
+    // Aquí va la lógica para guardar configuraciones
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Configuración guardada')),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
+        backgroundColor: const Color.fromRGBO(174, 183, 132, 1),
       ),
       body: ListView(
         children: [
@@ -54,7 +62,8 @@ class _SettingsViewState extends State<SettingsView> {
           ),
         ],
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      bottomNavigationBar: BottomNavBar(page: 4),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
