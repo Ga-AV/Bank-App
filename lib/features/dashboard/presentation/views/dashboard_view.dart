@@ -21,10 +21,6 @@ class BodyWidget extends StatelessWidget {
 
   void _handleFabPress() {
     print("FAB presionado en Dashboard");
-    // Aquí va la lógica para agregar dinero, transacción, etc.
-    // ScaffoldMessenger.of(context).showSnackBar(
-    //   const SnackBar(content: Text('Agregar transacción')),
-    // );
   }
 
   @override

@@ -1,3 +1,4 @@
+import 'package:bank_app/features/dashboard/transfers/view/transfers_view.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:bank_app/theme/colors_enum.dart';
@@ -31,7 +32,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       index: _page,
       items: <Widget>[
         Icon(Icons.home, size: 30),
-        Icon(Icons.history, size: 30),
+        Icon(Icons.transform_rounded, size: 30),
         Icon(Icons.attach_money, size: 30),
         Icon(Icons.add_card, size: 30),
         Icon(Icons.settings, size: 30),
@@ -55,7 +56,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
             // Navegar a Home
             break;
           case 1:
-            // Navegar a History
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => TransfersView())
+            );
             break;
           case 2:
             Navigator.pushReplacement(

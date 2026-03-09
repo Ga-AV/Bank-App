@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Bank App',
       theme: ThemeData(
+        fontFamily: 'OpenSans',
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.white,
         ),

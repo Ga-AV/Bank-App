@@ -8,4 +8,5 @@ class ColorEnum {
 
   static const Color white_1 = Color.fromRGBO(255, 255, 255, 1);
 
+  static const Color black_1 = Color.fromRGBO(0, 0, 0, 1);
 }
