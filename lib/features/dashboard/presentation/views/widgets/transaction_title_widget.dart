@@ -17,7 +17,7 @@ class TransactionTile extends StatelessWidget {
     final isNegative = amount.startsWith('-');
 
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -35,10 +35,13 @@ class TransactionTile extends StatelessWidget {
             height: 45,
             width: 45,
             decoration: BoxDecoration(
-              color: Color.fromRGBO(248, 243, 225, 1),
+              color: Color.fromRGBO(245, 249, 223, 1),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Icon(Icons.store, color: Color.fromRGBO(65, 67, 27, 1)),
+            child: Icon(
+              Icons.store,
+              color: const Color.fromARGB(255, 74, 74, 74),
+            ),
           ),
           const SizedBox(width: 15),
           Expanded(
@@ -48,17 +51,19 @@ class TransactionTile extends StatelessWidget {
                 Text(
                   title,
                   style: const TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 15,
-                      fontFamily: "OpenSans"),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 15,
+                    fontFamily: "OpenSans",
+                  ),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   date,
                   style: TextStyle(
-                      color: Colors.grey.shade600,
-                      fontSize: 12,
-                      fontFamily: "OpenSans"),
+                    color: Colors.grey.shade600,
+                    fontSize: 12,
+                    fontFamily: "OpenSans",
+                  ),
                 ),
               ],
             ),
@@ -66,10 +71,11 @@ class TransactionTile extends StatelessWidget {
           Text(
             amount,
             style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: isNegative ? Colors.redAccent : Colors.green,
-                fontFamily: "OpenSans"),
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: isNegative ? Colors.redAccent : Colors.green,
+              fontFamily: "OpenSans",
+            ),
           ),
         ],
       ),

@@ -1,33 +1,37 @@
 import 'package:bank_app/core/assets.dart';
 import 'package:bank_app/features/dashboard/presentation/views/dashboard_view.dart';
-import 'package:bank_app/features/register/presentation/views/register_view.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class RegisterView extends StatelessWidget {
+  const RegisterView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: BodyWidget(),
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        // Color.fromRGBO(174, 183, 132, 1),
-        titleSpacing: 0.01,
-        toolbarHeight: 60,
-        shape: ShapeBorder.lerp(null, null, 1),
-        title: Text(
-          "Sign in",
-          style: TextStyle(
-            fontFamily: "OpenSans",
-            fontWeight: FontWeight.w600,
-            fontSize: 18,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Scaffold(
+          backgroundColor: Colors.white,
+          resizeToAvoidBottomInset: true,
+          body: BodyWidget(),
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            // Color.fromRGBO(174, 183, 132, 1),
+            titleSpacing: 0.01,
+            toolbarHeight: 60,
+            shape: ShapeBorder.lerp(null, null, 1),
+            title: Text(
+              "Register",
+              style: TextStyle(
+                fontFamily: "OpenSans",
+                fontWeight: FontWeight.w600,
+                fontSize: 18,
+              ),
+              textAlign: TextAlign.end,
+            ),
           ),
-          textAlign: TextAlign.end,
-        ),
-      ),
+        );
+      },
     );
   }
 }
@@ -44,7 +48,7 @@ class BodyWidget extends StatelessWidget {
             horizontal: constraints.maxWidth > 600
                 ? (constraints.maxWidth - 600) / 2 * 24
                 : 24,
-            vertical: 40,
+            vertical: 10,
           ),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -59,7 +63,7 @@ class BodyWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Welcome Back",
+                      "Register",
                       style: TextStyle(
                         fontFamily: "OpenSans",
                         fontSize: 28,
@@ -69,7 +73,7 @@ class BodyWidget extends StatelessWidget {
                       textAlign: TextAlign.start,
                     ),
                     Text(
-                      "Hi there, sign in to continue ",
+                      "Hi there, create an account to continue ",
                       style: TextStyle(fontFamily: "OpenSans", fontSize: 14),
                       textAlign: TextAlign.start,
                     ),
@@ -83,6 +87,24 @@ class BodyWidget extends StatelessWidget {
                 height: 200,
                 //fit: BoxFit.cover,
                 alignment: AlignmentGeometry.topCenter,
+              ),
+              SizedBox(height: 20),
+              TextField(
+                decoration: InputDecoration(
+                  hintText: "Username",
+                  label: Text(
+                    "Username",
+                    style: TextStyle(fontFamily: "OpenSans"),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  suffixIcon: Icon(
+                    Icons.check_circle,
+                    color: Color.fromRGBO(174, 183, 132, 1),
+                  ),
+                ),
+                cursorColor: Color.fromRGBO(174, 183, 132, 1),
               ),
               SizedBox(height: 20),
               TextField(
@@ -121,30 +143,26 @@ class BodyWidget extends StatelessWidget {
                 ),
                 cursorColor: Color.fromRGBO(174, 183, 132, 1),
               ),
-              SizedBox(height: 15),
-              Container(
-                alignment: AlignmentGeometry.topEnd,
-                child: Column(
-                  children: [
-                    RichText(
-                      textAlign: TextAlign.end,
-                      text: TextSpan(
-                        text: "Forgot your password?",
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            print("Register now");
-                          },
-                        style: TextStyle(
-                          color: Color.fromRGBO(65, 67, 27, 1),
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
+              SizedBox(height: 20),
+              TextField(
+                decoration: InputDecoration(
+                  hintText: "****",
+                  label: Text(
+                    "Confirm Password",
+                    style: TextStyle(fontFamily: "OpenSans"),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  suffixIcon: Icon(
+                    Icons.visibility_off,
+                    color: Color.fromRGBO(174, 183, 132, 1),
+                  ),
+                  focusColor: Color.fromRGBO(174, 183, 132, 1),
                 ),
+                cursorColor: Color.fromRGBO(174, 183, 132, 1),
               ),
-
-              SizedBox(height: 32),
+              SizedBox(height: 25),
               ElevatedButton(
                 style: ButtonStyle(
                   alignment: AlignmentGeometry.bottomCenter,
@@ -169,7 +187,7 @@ class BodyWidget extends StatelessWidget {
                   );
                 },
                 child: Text(
-                  "Sign in",
+                  "Sign up",
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
@@ -182,20 +200,14 @@ class BodyWidget extends StatelessWidget {
               RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
-                  text: "Don’t have account? ",
+                  text: "Already have an account? ",
                   style: TextStyle(color: Colors.black, fontSize: 14),
                   children: [
                     TextSpan(
-                      text: "Sign Up",
+                      text: "Login",
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute<void>(
-                              builder: (BuildContext context) =>
-                                  const RegisterView(),
-                            ),
-                          );
+                          print("Register now");
                         },
                       style: TextStyle(
                         color: Color.fromRGBO(65, 67, 27, 1),
