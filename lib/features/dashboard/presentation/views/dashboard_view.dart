@@ -88,6 +88,8 @@ class DashboardViewState extends State<DashboardView> {
 }
 
 class _TransactionsSection extends StatelessWidget {
+  const _TransactionsSection();
+
   @override
   Widget build(BuildContext context) {
     return Column(
