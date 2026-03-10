@@ -2,16 +2,9 @@
 
 Bank App Flutter project.
 
-*In development*
-This project contains the modules:
-  - Login
-  - Dashboard
-  - History
+Sprint 1: feature/sprint_one
 
-To do:
-  - Transfer
-  - Configuration
-  - HTTP client
+Video: https://drive.google.com/drive/folders/1vPBOObZBbYMdupHiMiOThoDqZgmvqABO?usp=sharing
 
 ## Getting Started
 
