@@ -1,15 +1,14 @@
+import 'package:bank_app/features/login/presentation/views/welcome_view.dart';
+import 'package:bank_app/features/movements/presentation/views/movements_view.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:bank_app/theme/colors_enum.dart';
 import 'package:bank_app/features/dashboard/settings/views/settings_view.dart';
 import 'package:bank_app/features/dashboard/presentation/views/dashboard_view.dart';
 
-
 class BottomNavBar extends StatefulWidget {
   final int page;
-  BottomNavBar({
-    required this.page
-  });
+  BottomNavBar({required this.page});
 
   @override
   _BottomNavBarState createState() => _BottomNavBarState();
@@ -20,7 +19,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _page = widget.page;
   }
@@ -38,42 +37,62 @@ class _BottomNavBarState extends State<BottomNavBar> {
       ],
       color: ColorEnum.green_4,
       buttonBackgroundColor: ColorEnum.green_1,
-      backgroundColor: ColorEnum.white_1,
+      backgroundColor: Colors.transparent,
       animationCurve: Curves.easeInOut,
       animationDuration: Duration(milliseconds: 600),
       onTap: (index) {
         setState(() {
           _page = index;
         });
-        
+
         // Aquí puedes agregar navegación si lo necesitas
         print('Tab seleccionado: $index');
-        
+
         // Ejemplo: navegar a diferentes páginas
-        switch(index) {
+        switch (index) {
           case 0:
-            // Navegar a Home
+             Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const WelcomeView(),
+                  ),
+                );
             break;
           case 1:
-            // Navegar a History
+            Navigator.push(
+              context,
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) => const Movements(),
+              ),
+            );
+
             break;
           case 2:
-            Navigator.pushReplacement(
+             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => DashboardView())
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) => const DashboardView(),
+              ),
             );
             break;
           case 3:
-            // Navegar a Cards
-            break;
-          case 4:
-            Navigator.pushReplacement(
+             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => SettingsView())
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) => const Movements(),
+              ),
             );
             break;
-            // Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsView()));
-            // break;
+          case 4:
+             Navigator.push(
+              context,
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) => const SettingsView(),
+              ),
+            );
+            break;
+          // Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsView()));
+          // break;
         }
       },
       letIndexChange: (index) => true,

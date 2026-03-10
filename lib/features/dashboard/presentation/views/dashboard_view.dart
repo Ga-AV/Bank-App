@@ -1,3 +1,4 @@
+import 'package:bank_app/features/dashboard/bottomBar/widget/bottomBar.dart';
 import 'package:bank_app/features/dashboard/presentation/views/widgets/transaction_title_widget.dart';
 import 'package:bank_app/features/movements/presentation/views/movements_view.dart';
 import 'package:flutter/material.dart';
@@ -25,9 +26,7 @@ class DashboardViewState extends State<DashboardView> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: bodyWidget(),
-      bottomNavigationBar: const _BottomNavBar(),
-      floatingActionButton: const _CenterFAB(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomNavBar(page: 2),
     );
   }
 
@@ -88,8 +87,6 @@ class DashboardViewState extends State<DashboardView> {
 }
 
 class _TransactionsSection extends StatelessWidget {
-  const _TransactionsSection();
-
   @override
   Widget build(BuildContext context) {
     return Column(
