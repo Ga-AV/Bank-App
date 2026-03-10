@@ -2,16 +2,11 @@
 
 Bank App Flutter project.
 
-*In development*
-This project contains the modules:
-  - Login
-  - Dashboard
-  - History
+*This is not the final branch for Sprint 1*
 
-To do:
-  - Transfer
-  - Configuration
-  - HTTP client
+Branch to check sprint 1: feature/sprint_one
+
+Video: https://drive.google.com/drive/folders/1vPBOObZBbYMdupHiMiOThoDqZgmvqABO?usp=sharing
 
 ## Getting Started
 
