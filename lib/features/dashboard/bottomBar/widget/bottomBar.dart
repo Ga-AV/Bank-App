@@ -69,7 +69,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             Navigator.push(
               context,
               MaterialPageRoute<void>(
-                builder: (BuildContext context) => const DashboardView(),
+                builder: (BuildContext context) =>  DashboardView(),
               ),
             );
             break;

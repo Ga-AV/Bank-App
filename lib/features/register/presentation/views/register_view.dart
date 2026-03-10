@@ -182,7 +182,7 @@ class BodyWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute<void>(
-                      builder: (BuildContext context) => const DashboardView(),
+                      builder: (BuildContext context) =>  DashboardView(),
                     ),
                   );
                 },
