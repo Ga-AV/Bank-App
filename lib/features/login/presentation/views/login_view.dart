@@ -80,7 +80,7 @@ class BodyWidget extends StatelessWidget {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => DashboardView(user: auth.user!),
+                      builder: (_) => DashboardView(),
                     ),
                   );
                 });
