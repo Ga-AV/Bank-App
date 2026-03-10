@@ -25,14 +25,7 @@ class _MovementsState extends State<Movements> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 246, 247, 246),
-      appBar: AppBar(
-        backgroundColor: Colors.white70,
-        surfaceTintColor: Colors.white70,
-        titleSpacing: 0.01,
-        toolbarHeight: 60,
-        shape: ShapeBorder.lerp(null, null, 1),
-      ),
-      bottomNavigationBar: BottomNavBar(page: 1),
+      bottomNavigationBar: BottomNavBar(page: 3),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(18),

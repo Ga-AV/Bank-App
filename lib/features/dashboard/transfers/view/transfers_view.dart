@@ -27,7 +27,7 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
-      title: const Text("Transfers"),
+      title: const Text("Transfers", style: TextStyle(fontFamily: "OpenSans", fontWeight: FontWeight.w600),),
       backgroundColor: ColorEnum.green_1,
     );
   }

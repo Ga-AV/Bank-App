@@ -31,9 +31,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
       index: _page,
       items: <Widget>[
         Icon(Icons.home, size: 30),
-        Icon(Icons.transform_rounded, size: 30),
-        Icon(Icons.attach_money, size: 30),
         Icon(Icons.add_card, size: 30),
+        Icon(Icons.attach_money, size: 30),
+        Icon(Icons.history, size: 30),
         Icon(Icons.settings, size: 30),
       ],
       color: ColorEnum.green_4,
@@ -52,21 +52,21 @@ class _BottomNavBarState extends State<BottomNavBar> {
         // Ejemplo: navegar a diferentes páginas
         switch (index) {
           case 0:
-             Navigator.push(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => const WelcomeView(),
-                  ),
-                );
+            Navigator.push(
+              context,
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) => const WelcomeView(),
+              ),
+            );
             break;
           case 1:
-            Navigator.pushReplacement(
+            Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => TransfersView())
+              MaterialPageRoute(builder: (context) => TransfersView()),
             );
             break;
           case 2:
-             Navigator.push(
+            Navigator.push(
               context,
               MaterialPageRoute<void>(
                 builder: (BuildContext context) => const DashboardView(),
@@ -74,23 +74,19 @@ class _BottomNavBarState extends State<BottomNavBar> {
             );
             break;
           case 3:
-             Navigator.push(
+            Navigator.push(
               context,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) => const Movements(),
-              ),
+              MaterialPageRoute(builder: (context) => Movements()),
             );
             break;
           case 4:
-             Navigator.push(
+            Navigator.push(
               context,
               MaterialPageRoute<void>(
                 builder: (BuildContext context) => const SettingsView(),
               ),
             );
             break;
-          // Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsView()));
-          // break;
         }
       },
       letIndexChange: (index) => true,

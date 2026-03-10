@@ -1,5 +1,6 @@
 import 'package:bank_app/features/dashboard/bottomBar/widget/bottomBar.dart';
 import 'package:bank_app/features/dashboard/presentation/views/widgets/transaction_title_widget.dart';
+import 'package:bank_app/features/dashboard/transfers/view/transfers_view.dart';
 import 'package:bank_app/features/movements/presentation/views/movements_view.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -343,7 +344,7 @@ class ActionButtons extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute<void>(
-                  builder: (BuildContext context) => const Movements(),
+                  builder: (BuildContext context) => const TransfersView(),
                 ),
               ),
             },
