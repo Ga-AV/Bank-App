@@ -1,3 +1,4 @@
+import 'package:bank_app/features/dashboard/bottomBar/widget/bottomBar.dart';
 import 'package:bank_app/features/dashboard/presentation/views/widgets/transaction_title_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -31,6 +32,7 @@ class _MovementsState extends State<Movements> {
         toolbarHeight: 60,
         shape: ShapeBorder.lerp(null, null, 1),
       ),
+      bottomNavigationBar: BottomNavBar(page: 1),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(18),
