@@ -2,7 +2,7 @@
 
 Bank App Flutter project.
 
-Sprint 1: feature/sprint_one
+Video:
 
 Video: https://drive.google.com/drive/folders/1vPBOObZBbYMdupHiMiOThoDqZgmvqABO?usp=sharing
 
