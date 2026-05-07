@@ -1,6 +1,7 @@
 import 'package:bank_app/core/assets.dart';
-import 'package:bank_app/features/login/presentation/views/login_view.dart';
+import 'package:bank_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class WelcomeView extends StatelessWidget {
   const WelcomeView({super.key});
@@ -16,6 +17,7 @@ class BodyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(
@@ -37,7 +39,7 @@ class BodyWidget extends StatelessWidget {
                 alignment: AlignmentGeometry.topCenter,
               ),
               Text(
-                "Welcome to Bank App",
+                loc.welcome,
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.w600,
@@ -45,7 +47,7 @@ class BodyWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                "Secure. Simple. Seamless.",
+                loc.slogan,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w400,
@@ -69,15 +71,10 @@ class BodyWidget extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute<void>(
-                      builder: (BuildContext context) => const LoginView(),
-                    ),
-                  );
+                   context.go('/login');
                 },
                 child: Text(
-                  "Enter",
+                  loc.enter,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,

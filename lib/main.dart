@@ -1,28 +1,16 @@
-import 'package:bank_app/core/network/dio_client.dart';
-import 'package:bank_app/features/login/data/datasources/login_remote_datasource.dart';
-import 'package:bank_app/features/login/data/repositories/login_repository_impl.dart';
-import 'package:bank_app/features/login/domain/usecases/login_usecase.dart';
-import 'package:bank_app/features/login/presentation/provider/login_provider.dart';
-import 'package:bank_app/features/login/presentation/views/login_view.dart';
-import 'package:bank_app/features/login/presentation/views/welcome_view.dart';
+import 'package:bank_app/core/enviroment/env.dart';
+import 'package:bank_app/core/router/app_router.dart';
+import 'package:bank_app/core/utils/local_storage.dart';
+import 'package:bank_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void main() {
-  final dioClient = DioClient();
-  final remoteDataSource = LoginRemoteDataSourceImpl(dioClient.dio);
-  final repository = LoginRepositoryImpl(remoteDataSource);
-  final loginUseCase = LoginUseCase(repository);
-
-  //runApp(const MyApp());
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => LoginProvider(loginUseCase)),
-      ],
-      child: const MyApp(),
-    ),
-  );
+void runProject() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Env.initialize();
+  await LocalStorage().init();
+  runApp(const ProviderScope(child:  MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -30,13 +18,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Bank App',
+      debugShowCheckedModeBanner: false,
+      routerConfig: appRouter,
       theme: ThemeData(
         fontFamily: 'OpenSans',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
       ),
-      home: const WelcomeView(),
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
     );
   }
 }

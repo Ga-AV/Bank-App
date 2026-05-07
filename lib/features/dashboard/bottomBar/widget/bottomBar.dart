@@ -1,21 +1,25 @@
+import 'package:bank_app/features/login/presentation/provider/auth_provider.dart';
 import 'package:bank_app/features/login/presentation/views/welcome_view.dart';
 import 'package:bank_app/features/movements/presentation/views/movements_view.dart';
 import 'package:bank_app/features/dashboard/transfers/view/transfers_view.dart';
+import 'package:bank_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:bank_app/theme/colors_enum.dart';
 import 'package:bank_app/features/dashboard/settings/views/settings_view.dart';
 import 'package:bank_app/features/dashboard/presentation/views/dashboard_view.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
-class BottomNavBar extends StatefulWidget {
+class BottomNavBar extends ConsumerStatefulWidget {
   final int page;
   BottomNavBar({required this.page});
 
   @override
-  _BottomNavBarState createState() => _BottomNavBarState();
+  ConsumerState<BottomNavBar> createState() => _BottomNavBarState();
 }
 
-class _BottomNavBarState extends State<BottomNavBar> {
+class _BottomNavBarState extends ConsumerState<BottomNavBar> {
   int _page = 0;
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
 
@@ -45,19 +49,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
         setState(() {
           _page = index;
         });
-
-        // Aquí puedes agregar navegación si lo necesitas
-        print('Tab seleccionado: $index');
-
-        // Ejemplo: navegar a diferentes páginas
         switch (index) {
           case 0:
-            Navigator.push(
-              context,
-              MaterialPageRoute<void>(
-                builder: (BuildContext context) => const WelcomeView(),
-              ),
-            );
+            showLogoutDialog(context, ref);
             break;
           case 1:
             Navigator.push(
@@ -69,7 +63,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             Navigator.push(
               context,
               MaterialPageRoute<void>(
-                builder: (BuildContext context) =>  DashboardView(),
+                builder: (BuildContext context) => DashboardView(),
               ),
             );
             break;
@@ -91,5 +85,41 @@ class _BottomNavBarState extends State<BottomNavBar> {
       },
       letIndexChange: (index) => true,
     );
+  }
+
+  Future<void> showLogoutDialog(BuildContext context, WidgetRef ref) async {
+    var loc = AppLocalizations.of(context)!;
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(loc.logout),
+          content: Text(loc.confirmation_logout),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context, false);
+              },
+              child: Text(loc.cancel),
+            ),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context, true);
+              },
+              child: Text(loc.confirmation),
+            ),
+          ],
+        );
+      },
+    );
+
+    if (confirm == true) {
+      await ref.read(authProvider.notifier).logout();
+
+      if (context.mounted) {
+        context.go('/');
+      }
+    }
   }
 }

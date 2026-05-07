@@ -2,9 +2,13 @@
 
 Bank App Flutter project.
 
-Video:
-
 Video: https://drive.google.com/drive/folders/1vPBOObZBbYMdupHiMiOThoDqZgmvqABO?usp=sharing
+
+API for login: https://dummyjson.com/auth/login
+
+Credentials for testing:
+username: "emilys",
+password: "emilyspass"
 
 ## Getting Started
 

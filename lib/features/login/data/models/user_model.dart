@@ -1,15 +1,25 @@
-import '../../domain/entities/user.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../domain/entities/user_entity.dart';
+part 'user_model.freezed.dart';
+part 'user_model.g.dart';
 
-class UserModel extends User {
-  UserModel({
+@freezed
+abstract class UserModel with _$UserModel implements UserEntity {
+  const factory UserModel({
     required String id,
+    required String username,
     required String email,
-  }) : super(id: id, email: email);
+    required String firstName,
+    required String lastName,
+    required String image,
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(
-      id: json['id'],
-      email: json['email'],
-    );
-  }
+    @JsonKey(name: 'accessToken')
+    required String token,
+  }) = _UserModel;
+
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson({
+        ...json,
+        'id': json['id'].toString(),
+      });
 }
