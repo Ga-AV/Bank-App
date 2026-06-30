@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bank_app/features/dashboard/bottomBar/widget/bottomBar.dart';
 import 'package:bank_app/theme/colors_enum.dart';
+import 'package:bank_app/l10n/app_localizations.dart';
 
 class TransfersView extends StatefulWidget {
   const TransfersView({ Key? key }) : super(key: key);
@@ -25,9 +26,10 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return AppBar(
       automaticallyImplyLeading: false,
-      title: const Text("Transfers", style: TextStyle(fontFamily: "OpenSans", fontWeight: FontWeight.w600),),
+      title: Text(loc.transfers, style: TextStyle(fontFamily: "OpenSans", fontWeight: FontWeight.w600),),
       backgroundColor: ColorEnum.green_1,
     );
   }
@@ -41,6 +43,7 @@ class BodyTransfers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Stack(
       children: [
 
@@ -72,8 +75,8 @@ class BodyTransfers extends StatelessWidget {
                 children: [
 
                   // Cuenta origen
-                  const Text(
-                    "Cuenta origen",
+                  Text(
+                    loc.source_account,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
 
@@ -108,15 +111,15 @@ class BodyTransfers extends StatelessWidget {
                   const SizedBox(height: 20),
 
                   // Saldo cuenta origen
-                  const Text(
-                    "Saldo en cuenta origen",
+                  Text(
+                    loc.source_account_balance,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
 
                   const SizedBox(height: 5),
 
                   const Text(
-                    "Q. 121,000", // tú lo reemplazas
+                    "Q. 121,000",
                     style: TextStyle(fontSize: 16),
                   ),
 
@@ -127,8 +130,8 @@ class BodyTransfers extends StatelessWidget {
                   const SizedBox(height: 15),
 
                   // Cuenta destino
-                  const Text(
-                    "Cuenta destino",
+                  Text(
+                    loc.destination_account,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
 
@@ -167,14 +170,14 @@ class BodyTransfers extends StatelessWidget {
 
                   TextButton(
                     onPressed: () {},
-                    child: const Text("Gestionar cuentas de terceros"),
+                    child: Text(loc.manage_third_party_accounts),
                   ),
 
                   const SizedBox(height: 20),
 
                   // Monto
-                  const Text(
-                    "Monto a transferir",
+                  Text(
+                    loc.transfer_amount,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
 
@@ -206,9 +209,9 @@ class BodyTransfers extends StatelessWidget {
                             context: context,
                             builder: (context) {
                               return AlertDialog(
-                                title: const Text("Confirmar transferencia"),
-                                content: const Text(
-                                  "Transferir de cuenta XXX a cuenta YYY",
+                                title: Text(loc.confirm_transfer),
+                                content: Text(
+                                  loc.transfer_from_to,
                                 ),
                                 actions: [
 
@@ -216,7 +219,7 @@ class BodyTransfers extends StatelessWidget {
                                     onPressed: () {
                                       Navigator.pop(context);
                                     },
-                                    child: const Text("Cancelar"),
+                                    child: Text(loc.cancel),
                                   ),
 
                                   ElevatedButton(
@@ -224,7 +227,7 @@ class BodyTransfers extends StatelessWidget {
                                       Navigator.pop(context);
                                       // aquí ejecutas la transferencia
                                     },
-                                    child: const Text("Transferir"),
+                                    child: Text(loc.transfer),
                                   ),
 
                                 ],
@@ -232,7 +235,7 @@ class BodyTransfers extends StatelessWidget {
                             },
                           );
                         },
-                        child: const Text("Transferir"),
+                        child: Text(loc.transfer),
                       ),
                     ),
                   ),

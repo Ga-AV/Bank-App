@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bank_app/features/dashboard/bottomBar/widget/bottomBar.dart';
 import 'package:bank_app/theme/colors_enum.dart';
+import 'package:bank_app/l10n/app_localizations.dart';
 
 class SettingsNotificaciontView extends StatefulWidget {
   const SettingsNotificaciontView({Key? key}) : super(key: key);
@@ -25,8 +26,9 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return AppBar(
-      title: const Text('Notification Settings'),
+      title: Text(loc.notification_settings),
       backgroundColor: ColorEnum.green_1,
     );
   }
@@ -55,6 +57,7 @@ class _BodyNotificationState extends State<BodyNotification> {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Stack(
       children: [
 
@@ -88,7 +91,7 @@ class _BodyNotificationState extends State<BodyNotification> {
               children: [
 
                 SwitchListTile(
-                  title: const Text("General Notifications"),
+                  title: Text(loc.general_notifications),
                   value: generalNotifications,
                   onChanged: (value) {
                     setState(() {
@@ -102,7 +105,7 @@ class _BodyNotificationState extends State<BodyNotification> {
                 ),
 
                 SwitchListTile(
-                  title: const Text("Sound"),
+                  title: Text(loc.sound),
                   value: sound,
                   onChanged: (value) {
                     setState(() {
@@ -116,7 +119,7 @@ class _BodyNotificationState extends State<BodyNotification> {
                 ),
 
                 SwitchListTile(
-                  title: const Text("Sound Call"),
+                  title: Text(loc.sound_call),
                   value: soundCall,
                   onChanged: (value) {
                     setState(() {
@@ -130,7 +133,7 @@ class _BodyNotificationState extends State<BodyNotification> {
                 ),
 
                 SwitchListTile(
-                  title: const Text("Vibrate"),
+                  title: Text(loc.vibrate),
                   value: vibrate,
                   onChanged: (value) {
                     setState(() {
@@ -144,7 +147,7 @@ class _BodyNotificationState extends State<BodyNotification> {
                 ),
 
                 SwitchListTile(
-                  title: const Text("Transaction Update"),
+                  title: Text(loc.transaction_update),
                   value: transactionUpdate,
                   onChanged: (value) {
                     setState(() {
@@ -158,7 +161,7 @@ class _BodyNotificationState extends State<BodyNotification> {
                 ),
 
                 SwitchListTile(
-                  title: const Text("Expense Reminder"),
+                  title: Text(loc.expense_reminder),
                   value: expenseReminder,
                   onChanged: (value) {
                     setState(() {
@@ -172,7 +175,7 @@ class _BodyNotificationState extends State<BodyNotification> {
                 ),
 
                 SwitchListTile(
-                  title: const Text("Budget Notifications"),
+                  title: Text(loc.budget_notifications),
                   value: budgetNotifications,
                   onChanged: (value) {
                     setState(() {
@@ -186,7 +189,7 @@ class _BodyNotificationState extends State<BodyNotification> {
                 ),
 
                 SwitchListTile(
-                  title: const Text("Low Balance Alerts"),
+                  title: Text(loc.low_balance_alerts),
                   value: lowBalanceAlerts,
                   onChanged: (value) {
                     setState(() {

@@ -1,5 +1,6 @@
 import 'package:bank_app/features/dashboard/bottomBar/widget/bottomBar.dart';
 import 'package:bank_app/features/dashboard/presentation/views/widgets/transaction_title_widget.dart';
+import 'package:bank_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class Movements extends StatefulWidget {
@@ -23,6 +24,7 @@ class _MovementsState extends State<Movements> {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 246, 247, 246),
       bottomNavigationBar: BottomNavBar(page: 3),
@@ -95,7 +97,7 @@ class _MovementsState extends State<Movements> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Total Spendings",
+                                loc.total_spendings,
                                 style: TextStyle(
                                   color: Colors.white70,
                                   fontSize: 13,
@@ -117,8 +119,8 @@ class _MovementsState extends State<Movements> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            const Text(
-                              "From selection",
+                            Text(
+                              loc.from_selection,
                               style: TextStyle(
                                 color: Colors.white70,
                                 fontSize: 12,
@@ -153,8 +155,8 @@ class _MovementsState extends State<Movements> {
                     ),
                   ),
                   const SizedBox(height: 30),
-                  const Text(
-                    "Recent Transactions",
+                  Text(
+                    loc.recent_transactions,
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 15),

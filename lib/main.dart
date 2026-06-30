@@ -1,6 +1,7 @@
 import 'package:bank_app/core/enviroment/env.dart';
 import 'package:bank_app/core/router/app_router.dart';
 import 'package:bank_app/core/utils/local_storage.dart';
+import 'package:bank_app/core/utils/locale_notifier.dart';
 import 'package:bank_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -18,20 +19,27 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Bank App',
-      debugShowCheckedModeBanner: false,
-      routerConfig: appRouter,
-      theme: ThemeData(
-        fontFamily: 'OpenSans',
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
-      ),
-      localizationsDelegates: [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
+    return ValueListenableBuilder<Locale>(
+      valueListenable: localeNotifier,
+      builder: (context, locale, _) {
+        return MaterialApp.router(
+          title: 'Bank App',
+          debugShowCheckedModeBanner: false,
+          routerConfig: appRouter,
+          locale: locale,
+          supportedLocales: AppLocalizations.supportedLocales,
+          theme: ThemeData(
+            fontFamily: 'OpenSans',
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+          ),
+          localizationsDelegates: [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+        );
+      },
     );
   }
 }

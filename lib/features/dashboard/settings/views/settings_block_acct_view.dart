@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bank_app/theme/colors_enum.dart';
+import 'package:bank_app/l10n/app_localizations.dart';
 
 class SettingsBlockAcctView extends StatefulWidget {
   const SettingsBlockAcctView({Key? key}) : super(key: key);
@@ -12,9 +13,10 @@ class _SettingsBlockAcctViewState extends State<SettingsBlockAcctView> {
   bool showPass = false;
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Block Account"),
+        title: Text(loc.block_account),
         backgroundColor: ColorEnum.green_1,
       ),
       body: Stack(
@@ -55,7 +57,7 @@ class _SettingsBlockAcctViewState extends State<SettingsBlockAcctView> {
                     Padding(
                         padding: EdgeInsets.only(left: 1),
                         child: Text(
-                          "Mensaje Importante",
+                          loc.important_message,
                           style: TextStyle(
                             fontSize: 30,
                             fontFamily: "OpenSans-Bold"
@@ -70,8 +72,8 @@ class _SettingsBlockAcctViewState extends State<SettingsBlockAcctView> {
                         border: Border.all(color: Colors.grey),
                         borderRadius: BorderRadius.circular(15),
                       ),
-                      child: const Text(
-                        "Al bloquear tu cuenta, se pausarán todas las transacciones salientes, transferencias y pagos con tarjeta hasta que contactes a soporte técnico o reactives tu acceso.",
+                      child: Text(
+                        loc.block_account_warning,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 18,
@@ -122,8 +124,8 @@ class _SettingsBlockAcctViewState extends State<SettingsBlockAcctView> {
                               borderRadius: BorderRadius.circular(25), // botón circular
                             ),
                           ),
-                          child: const Text(
-                            "Block",
+                          child: Text(
+                            loc.block,
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -143,7 +145,7 @@ class _SettingsBlockAcctViewState extends State<SettingsBlockAcctView> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        child: const Text("Cancel"),
+                        child: Text(loc.cancel),
                       ),
                     ),
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bank_app/features/dashboard/bottomBar/widget/bottomBar.dart';
 import 'package:bank_app/theme/colors_enum.dart';
+import 'package:bank_app/l10n/app_localizations.dart';
 
 class SettingsPasswordView extends StatefulWidget {
   const SettingsPasswordView({Key? key}) : super(key: key);
@@ -29,8 +30,9 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return AppBar(
-      title: const Text('Password Settings'),
+      title: Text(loc.password_settings),
       backgroundColor: ColorEnum.green_1,
     );
   }
@@ -54,6 +56,7 @@ class _BodyPasswordState extends State<BodyPassword> {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Stack(
       children: [
 
@@ -90,7 +93,7 @@ class _BodyPasswordState extends State<BodyPassword> {
                 Padding(
                   padding: EdgeInsets.only(left: 25),
                   child: Text(
-                    "Current Password",
+                    loc.current_password,
                     style: TextStyle(
                       fontSize: 15,
                     ),
@@ -124,7 +127,7 @@ class _BodyPasswordState extends State<BodyPassword> {
                 Padding(
                   padding: EdgeInsets.only(left: 25),
                   child: Text(
-                    "New Password",
+                    loc.new_password,
                     style: TextStyle(
                       fontSize: 15,
                     ),
@@ -158,7 +161,7 @@ class _BodyPasswordState extends State<BodyPassword> {
                 Padding(
                   padding: EdgeInsets.only(left: 25),
                   child: Text(
-                    "Confirm New Password",
+                    loc.confirm_new_password,
                     style: TextStyle(
                       fontSize: 15,
                     ),
@@ -204,8 +207,8 @@ class _BodyPasswordState extends State<BodyPassword> {
                           borderRadius: BorderRadius.circular(25), // botón circular
                         ),
                       ),
-                      child: const Text(
-                        "Change Password",
+                      child: Text(
+                        loc.change_password,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
