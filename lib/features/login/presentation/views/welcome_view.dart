@@ -71,7 +71,7 @@ class BodyWidget extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                   context.go('/login');
+                  context.go('/login');
                 },
                 child: Text(
                   loc.enter,

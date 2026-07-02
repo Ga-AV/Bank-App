@@ -1,5 +1,6 @@
 import 'package:bank_app/core/assets.dart';
 import 'package:bank_app/features/dashboard/presentation/views/dashboard_view.dart';
+import 'package:bank_app/l10n/app_localizations.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +9,7 @@ class RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
@@ -21,7 +23,7 @@ class RegisterView extends StatelessWidget {
             toolbarHeight: 60,
             shape: ShapeBorder.lerp(null, null, 1),
             title: Text(
-              "Register",
+              loc.register,
               style: TextStyle(
                 fontFamily: "OpenSans",
                 fontWeight: FontWeight.w600,
@@ -41,6 +43,7 @@ class BodyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(
@@ -63,7 +66,7 @@ class BodyWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Register",
+                      loc.register,
                       style: TextStyle(
                         fontFamily: "OpenSans",
                         fontSize: 28,
@@ -73,7 +76,7 @@ class BodyWidget extends StatelessWidget {
                       textAlign: TextAlign.start,
                     ),
                     Text(
-                      "Hi there, create an account to continue ",
+                      loc.create_new_account,
                       style: TextStyle(fontFamily: "OpenSans", fontSize: 14),
                       textAlign: TextAlign.start,
                     ),
@@ -91,9 +94,9 @@ class BodyWidget extends StatelessWidget {
               SizedBox(height: 20),
               TextField(
                 decoration: InputDecoration(
-                  hintText: "Username",
+                  hintText: loc.username,
                   label: Text(
-                    "Username",
+                    loc.username,
                     style: TextStyle(fontFamily: "OpenSans"),
                   ),
                   border: OutlineInputBorder(
@@ -109,9 +112,9 @@ class BodyWidget extends StatelessWidget {
               SizedBox(height: 20),
               TextField(
                 decoration: InputDecoration(
-                  hintText: "Your email",
+                  hintText: loc.your_email,
                   label: Text(
-                    "Email",
+                    loc.email,
                     style: TextStyle(fontFamily: "OpenSans"),
                   ),
                   border: OutlineInputBorder(
@@ -129,7 +132,7 @@ class BodyWidget extends StatelessWidget {
                 decoration: InputDecoration(
                   hintText: "****",
                   label: Text(
-                    "Password",
+                    loc.password,
                     style: TextStyle(fontFamily: "OpenSans"),
                   ),
                   border: OutlineInputBorder(
@@ -148,7 +151,7 @@ class BodyWidget extends StatelessWidget {
                 decoration: InputDecoration(
                   hintText: "****",
                   label: Text(
-                    "Confirm Password",
+                    loc.confirm_password,
                     style: TextStyle(fontFamily: "OpenSans"),
                   ),
                   border: OutlineInputBorder(
@@ -187,7 +190,7 @@ class BodyWidget extends StatelessWidget {
                   );
                 },
                 child: Text(
-                  "Sign up",
+                  loc.sign_up,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
@@ -200,11 +203,11 @@ class BodyWidget extends StatelessWidget {
               RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
-                  text: "Already have an account? ",
+                  text: loc.already_have_account,
                   style: TextStyle(color: Colors.black, fontSize: 14),
                   children: [
                     TextSpan(
-                      text: "Login",
+                      text: loc.login,
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
                           print("Register now");

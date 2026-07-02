@@ -2,6 +2,7 @@ import 'package:bank_app/features/dashboard/bottomBar/widget/bottomBar.dart';
 import 'package:bank_app/features/dashboard/presentation/views/widgets/transaction_title_widget.dart';
 import 'package:bank_app/features/dashboard/transfers/view/transfers_view.dart';
 import 'package:bank_app/features/movements/presentation/views/movements_view.dart';
+import 'package:bank_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -90,16 +91,17 @@ class DashboardViewState extends State<DashboardView> {
 class _TransactionsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Column(
-      children: const [
-        SizedBox(height: 15),
+      children: [
+        const SizedBox(height: 15),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
               padding: EdgeInsetsGeometry.only(left: 20),
               child: Text(
-                "Transactions",
+                loc.transactions,
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -110,7 +112,7 @@ class _TransactionsSection extends StatelessWidget {
             Padding(
               padding: EdgeInsetsGeometry.only(right: 20),
               child: Text(
-                "All transactions",
+                loc.all_transactions,
                 style: TextStyle(
                   color: Color.fromRGBO(65, 67, 27, 1),
                   fontFamily: "OpenSans",
@@ -121,13 +123,13 @@ class _TransactionsSection extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         TransactionTile(
           title: "Supermaket",
           date: "20 January 2026",
           amount: "-\Q200.00",
         ),
-        SizedBox(height: 15),
+        const SizedBox(height: 15),
         TransactionTile(
           title: "Wi-Fi Bill",
           date: "24 January 2026",
@@ -193,6 +195,7 @@ class HeaderSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 60, 20, 30),
       decoration: const BoxDecoration(
@@ -211,9 +214,9 @@ class HeaderSection extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
+            children: [
               Text(
-                "Good morning 👋",
+                loc.good_morning,
                 style: TextStyle(
                   color: Colors.white,
                   fontFamily: "OpenSans",
@@ -225,8 +228,8 @@ class HeaderSection extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 5),
-          const Text(
-            "User Name",
+          Text(
+            loc.user_name,
             style: TextStyle(
               fontSize: 26,
               color: Colors.white,
@@ -245,6 +248,7 @@ class CreditCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Container(
       height: 180,
       width: double.infinity,
@@ -262,9 +266,9 @@ class CreditCardWidget extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
+        children: [
           Text(
-            "Account Number",
+            loc.account_number,
             style: TextStyle(
               color: Colors.white,
               fontFamily: "OpenSans",
@@ -282,7 +286,7 @@ class CreditCardWidget extends StatelessWidget {
           ),
           Spacer(),
           Text(
-            "Balance",
+            loc.balance,
             style: TextStyle(color: Colors.white, fontFamily: "OpenSans"),
           ),
           SizedBox(height: 4),
@@ -327,6 +331,7 @@ class ActionButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 20),
       decoration: BoxDecoration(
@@ -338,7 +343,7 @@ class ActionButtons extends StatelessWidget {
         children: [
           actionItem(
             Icons.send,
-            "Transfer",
+            loc.transfer,
             context,
             () => {
               Navigator.push(
@@ -351,7 +356,7 @@ class ActionButtons extends StatelessWidget {
           ),
           actionItem(
             Icons.payment,
-            "Movements",
+            loc.movements,
             context,
             () => {
               Navigator.push(

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:bank_app/features/dashboard/bottomBar/widget/bottomBar.dart';
 import 'package:bank_app/theme/colors_enum.dart';
+import 'package:bank_app/l10n/app_localizations.dart';
 
 import 'package:bank_app/features/dashboard/settings/views/settings_block_acct_view.dart';
 import 'package:bank_app/features/dashboard/settings/views/settings_notificaciont_view.dart';
 import 'package:bank_app/features/dashboard/settings/views/settings_password_view.dart';
+import 'package:bank_app/features/dashboard/settings/views/settings_preferences_view.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({Key? key}) : super(key: key);
@@ -31,9 +33,10 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return AppBar(
       automaticallyImplyLeading: false,
-      title: const Text('Settings'),
+      title: Text(loc.settings),
       backgroundColor: ColorEnum.green_1,
     );
   }
@@ -53,6 +56,7 @@ class BodyList extends StatefulWidget{
 class _BodyListState extends State<BodyList> {
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Stack(
       children: [
 
@@ -99,7 +103,7 @@ class _BodyListState extends State<BodyList> {
                       size: 20,
                     ),
                   ),
-                  title: Text("Notification Settings"),
+                  title: Text(loc.notification_settings),
                   trailing: Icon(Icons.arrow_forward_ios),
                   onTap: () {
                     Navigator.push(
@@ -123,7 +127,7 @@ class _BodyListState extends State<BodyList> {
                       size: 20,
                     ),
                   ),
-                  title: Text("Password Settings"),
+                  title: Text(loc.password_settings),
                   trailing: Icon(Icons.arrow_forward_ios),
                   onTap: () {
                     Navigator.push(
@@ -147,7 +151,7 @@ class _BodyListState extends State<BodyList> {
                       size: 20,
                     ),
                   ),
-                  title: Text("Block Account"),
+                  title: Text(loc.block_account),
                   trailing: Icon(Icons.arrow_forward_ios),
                   onTap: () {
                     Navigator.push(
@@ -157,6 +161,28 @@ class _BodyListState extends State<BodyList> {
                   },
                 ),
 
+                ListTile(
+                  leading: Container(
+                    padding: EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: ColorEnum.green_4, // color del círculo
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.block,
+                      color: ColorEnum.green_2, // color del icono
+                      size: 20,
+                    ),
+                  ),
+                  title: Text(loc.preferences),
+                  trailing: Icon(Icons.arrow_forward_ios),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SettingsPreferencesView()),
+                    );
+                  },
+                ),
               ],
             ),
           ),
