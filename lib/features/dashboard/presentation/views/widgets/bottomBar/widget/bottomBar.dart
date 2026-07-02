@@ -1,12 +1,12 @@
 import 'package:bank_app/features/login/presentation/provider/auth_provider.dart';
 import 'package:bank_app/features/login/presentation/views/welcome_view.dart';
 import 'package:bank_app/features/movements/presentation/views/movements_view.dart';
-import 'package:bank_app/features/dashboard/transfers/view/transfers_view.dart';
+import 'package:bank_app/features/transfers/view/transfers_view.dart';
 import 'package:bank_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:bank_app/theme/colors_enum.dart';
-import 'package:bank_app/features/dashboard/settings/views/settings_view.dart';
+import 'package:bank_app/features/settings/views/settings_view.dart';
 import 'package:bank_app/features/dashboard/presentation/views/dashboard_view.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';

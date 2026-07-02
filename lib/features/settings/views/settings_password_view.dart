@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:bank_app/features/dashboard/bottomBar/widget/bottomBar.dart';
+import 'package:bank_app/features/dashboard/presentation/views/widgets/bottomBar/widget/bottomBar.dart';
 import 'package:bank_app/theme/colors_enum.dart';
 import 'package:bank_app/l10n/app_localizations.dart';
 
@@ -59,13 +59,9 @@ class _BodyPasswordState extends State<BodyPassword> {
     final loc = AppLocalizations.of(context)!;
     return Stack(
       children: [
-
-        // Fondo verde
         Container(
           color: ColorEnum.green_1,
         ),
-
-        // Panel blanco
         Positioned(
           top: 75,
           left: 0,
@@ -194,17 +190,17 @@ class _BodyPasswordState extends State<BodyPassword> {
 
                 Center(
                   child: SizedBox(
-                    width: 220, // ancho del botón
-                    height: 50, // alto del botón
+                    width: 220,
+                    height: 50, 
                     child: ElevatedButton(
                       onPressed: () {
-                        // acción del botón
+                 
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: ColorEnum.green_2, // color fondo
-                        foregroundColor: ColorEnum.white_1, // color texto
+                        backgroundColor: ColorEnum.green_2,
+                        foregroundColor: ColorEnum.white_1, 
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25), // botón circular
+                          borderRadius: BorderRadius.circular(25), 
                         ),
                       ),
                       child: Text(

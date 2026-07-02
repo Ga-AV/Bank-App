@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:bank_app/features/dashboard/bottomBar/widget/bottomBar.dart';
+import 'package:bank_app/features/dashboard/presentation/views/widgets/bottomBar/widget/bottomBar.dart';
 import 'package:bank_app/theme/colors_enum.dart';
 import 'package:bank_app/l10n/app_localizations.dart';
 
-import 'package:bank_app/features/dashboard/settings/views/settings_block_acct_view.dart';
-import 'package:bank_app/features/dashboard/settings/views/settings_notificaciont_view.dart';
-import 'package:bank_app/features/dashboard/settings/views/settings_password_view.dart';
-import 'package:bank_app/features/dashboard/settings/views/settings_preferences_view.dart';
+import 'package:bank_app/features/settings/views/settings_block_acct_view.dart';
+import 'package:bank_app/features/settings/views/settings_notificaciont_view.dart';
+import 'package:bank_app/features/settings/views/settings_password_view.dart';
+import 'package:bank_app/features/settings/views/settings_preferences_view.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({Key? key}) : super(key: key);
@@ -59,13 +59,9 @@ class _BodyListState extends State<BodyList> {
     final loc = AppLocalizations.of(context)!;
     return Stack(
       children: [
-
-        // Fondo verde
         Container(
           color: ColorEnum.green_1,
         ),
-
-        // Panel blanco
         Positioned(
           top: 75,
           left: 0,
@@ -94,12 +90,12 @@ class _BodyListState extends State<BodyList> {
                   leading: Container(
                     padding: EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: ColorEnum.green_4, // color del círculo
+                      color: ColorEnum.green_4,
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
                       Icons.notifications,
-                      color: ColorEnum.green_2, // color del icono
+                      color: ColorEnum.green_2,
                       size: 20,
                     ),
                   ),
@@ -118,12 +114,12 @@ class _BodyListState extends State<BodyList> {
                   leading: Container(
                     padding: EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: ColorEnum.green_4, // color del círculo
+                      color: ColorEnum.green_4,
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
                       Icons.password_sharp,
-                      color: ColorEnum.green_2, // color del icono
+                      color: ColorEnum.green_2,
                       size: 20,
                     ),
                   ),
@@ -142,12 +138,12 @@ class _BodyListState extends State<BodyList> {
                   leading: Container(
                     padding: EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: ColorEnum.green_4, // color del círculo
+                      color: ColorEnum.green_4,
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
                       Icons.block,
-                      color: ColorEnum.green_2, // color del icono
+                      color: ColorEnum.green_2,
                       size: 20,
                     ),
                   ),
@@ -165,12 +161,12 @@ class _BodyListState extends State<BodyList> {
                   leading: Container(
                     padding: EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: ColorEnum.green_4, // color del círculo
+                      color: ColorEnum.green_4,
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
                       Icons.block,
-                      color: ColorEnum.green_2, // color del icono
+                      color: ColorEnum.green_2,
                       size: 20,
                     ),
                   ),

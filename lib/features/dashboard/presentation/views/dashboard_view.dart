@@ -1,19 +1,25 @@
-import 'package:bank_app/features/dashboard/bottomBar/widget/bottomBar.dart';
+import 'package:bank_app/features/dashboard/domain/entities/product.dart';
+import 'package:bank_app/features/dashboard/presentation/provider/dashboard_provider.dart';
+import 'package:bank_app/features/dashboard/presentation/state/dashboard_state.dart';
+import 'package:bank_app/features/dashboard/presentation/views/widgets/bottomBar/widget/bottomBar.dart';
 import 'package:bank_app/features/dashboard/presentation/views/widgets/transaction_title_widget.dart';
-import 'package:bank_app/features/dashboard/transfers/view/transfers_view.dart';
+import 'package:bank_app/features/login/presentation/provider/auth_provider.dart';
+import 'package:bank_app/features/transfers/view/transfers_view.dart';
 import 'package:bank_app/features/movements/presentation/views/movements_view.dart';
 import 'package:bank_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:provider/provider.dart';
 
-class DashboardView extends StatefulWidget {
+class DashboardView extends ConsumerStatefulWidget {
   const DashboardView({super.key});
 
   @override
-  State<DashboardView> createState() => DashboardViewState();
+  ConsumerState<DashboardView> createState() => _DashboardViewState();
 }
 
-class DashboardViewState extends State<DashboardView> {
+class _DashboardViewState extends ConsumerState<DashboardView> {
   final PageController controller = PageController(viewportFraction: 1);
   int currentPage = 0;
 
@@ -21,6 +27,14 @@ class DashboardViewState extends State<DashboardView> {
   void dispose() {
     controller.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
+      ref.read(dashboardProvider.notifier).loadProducts();
+    });
   }
 
   @override
@@ -33,47 +47,84 @@ class DashboardViewState extends State<DashboardView> {
   }
 
   Widget bodyWidget() {
+    final state = ref.watch(dashboardProvider);
+
+    if (state.isLoading) {
+      return const Scaffold(
+        backgroundColor: Color.fromARGB(255, 246, 247, 246),
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
+    if (state.error != null) {
+      return Scaffold(
+        backgroundColor: const Color.fromARGB(255, 246, 247, 246),
+        body: Center(child: Text(state.error!)),
+      );
+    }
+
+    final products = state.products;
+
+    if (products.isEmpty) {
+      return const Scaffold(
+        backgroundColor: Color.fromARGB(255, 246, 247, 246),
+        body: Center(child: Text("No products available")),
+      );
+    }
+
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 246, 247, 246),
+
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const HeaderSection(),
+
             SizedBox(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
+
               child: PageView.builder(
                 controller: controller,
-                itemCount: 2,
-                onPageChanged: (value) => {
+                itemCount: products.length,
+
+                onPageChanged: (value) {
                   setState(() {
                     currentPage = value;
-                  }),
+                  });
                 },
-                itemBuilder: (context, index) {
+
+                itemBuilder: (_, index) {
+                  final product = products[index];
+
                   return Padding(
-                    padding: EdgeInsetsGeometry.only(right: 30, left: 30),
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         const SizedBox(height: 25),
-                        const CreditCardWidget(),
+
+                        CreditCardWidget(product: product),
+
                         const SizedBox(height: 20),
+
                         const ActionButtons(),
+
                         const SizedBox(height: 20),
+
                         SmoothPageIndicator(
                           controller: controller,
-                          count: 2,
+                          count: products.length,
                           effect: const WormEffect(
                             dotHeight: 10,
                             dotWidth: 10,
                             activeDotColor: Color.fromRGBO(174, 183, 132, 1),
                           ),
                         ),
+
                         const SizedBox(height: 10),
+
                         _TransactionsSection(),
                       ],
                     ),
@@ -179,7 +230,6 @@ class _BottomNavBar extends StatelessWidget {
                 ),
               },
             ),
-
             SizedBox(width: 40),
             Icon(Icons.add_card),
             Icon(Icons.settings),
@@ -190,11 +240,13 @@ class _BottomNavBar extends StatelessWidget {
   }
 }
 
-class HeaderSection extends StatelessWidget {
+class HeaderSection extends ConsumerWidget {
   const HeaderSection({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final userState = ref.watch(authProvider);
+    final username = userState.title;
     final loc = AppLocalizations.of(context)!;
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 60, 20, 30),
@@ -229,7 +281,7 @@ class HeaderSection extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           Text(
-            loc.user_name,
+            username,
             style: TextStyle(
               fontSize: 26,
               color: Colors.white,
@@ -244,7 +296,8 @@ class HeaderSection extends StatelessWidget {
 }
 
 class CreditCardWidget extends StatelessWidget {
-  const CreditCardWidget({super.key});
+  final Product product;
+  const CreditCardWidget({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -268,7 +321,7 @@ class CreditCardWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            loc.account_number,
+            product.productName,
             style: TextStyle(
               color: Colors.white,
               fontFamily: "OpenSans",
@@ -276,7 +329,7 @@ class CreditCardWidget extends StatelessWidget {
             ),
           ),
           Text(
-            "•••• •••• •••• 2858",
+            "•••• •••• •••• ${product.accountNumber}",
             style: TextStyle(
               color: Colors.white,
               fontSize: 18,
@@ -291,7 +344,7 @@ class CreditCardWidget extends StatelessWidget {
           ),
           SizedBox(height: 4),
           Text(
-            "\Q8,000.00",
+            "Q${product.balance.toStringAsFixed(2)}",
             style: TextStyle(
               color: Colors.white,
               fontSize: 24,

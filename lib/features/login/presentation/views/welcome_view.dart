@@ -25,7 +25,7 @@ class BodyWidget extends StatelessWidget {
             horizontal: constraints.maxWidth > 600
                 ? (constraints.maxWidth - 600) / 2 * 24
                 : 24,
-            vertical: 200,
+            vertical: 150,
           ),
           decoration: BoxDecoration(color: Colors.white),
           child: Column(

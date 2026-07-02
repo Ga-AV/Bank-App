@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:bank_app/features/dashboard/bottomBar/widget/bottomBar.dart';
+import 'package:bank_app/features/dashboard/presentation/views/widgets/bottomBar/widget/bottomBar.dart';
 import 'package:bank_app/theme/colors_enum.dart';
 import 'package:bank_app/l10n/app_localizations.dart';
 

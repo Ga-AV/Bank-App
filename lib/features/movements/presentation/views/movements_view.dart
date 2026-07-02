@@ -1,4 +1,4 @@
-import 'package:bank_app/features/dashboard/bottomBar/widget/bottomBar.dart';
+import 'package:bank_app/features/dashboard/presentation/views/widgets/bottomBar/widget/bottomBar.dart';
 import 'package:bank_app/features/dashboard/presentation/views/widgets/transaction_title_widget.dart';
 import 'package:bank_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
